@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :store_informations, only:[:new,:index,:edit,:create,:update]
+    root 'homes#top'
+  end
   namespace :user do
     get 'users/show'
     get 'users/edit'

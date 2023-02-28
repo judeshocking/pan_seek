@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_27_115329) do
+ActiveRecord::Schema.define(version: 2023_02_28_133215) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,23 @@ ActiveRecord::Schema.define(version: 2023_02_27_115329) do
     t.string "comments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user"
+    t.integer "post"
+    t.integer "user_id"
+    t.integer "post_id"
+  end
+
+  create_table "store_informations", force: :cascade do |t|
+    t.integer "bread_id"
+    t.string "address", null: false
+    t.string "access", null: false
+    t.integer "business_hours", null: false
+    t.string "eat_in_space", null: false
+    t.string "regular_holiday", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["bread_id"], name: "index_store_informations_on_bread_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,4 +90,5 @@ ActiveRecord::Schema.define(version: 2023_02_27_115329) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "store_informations", "breads"
 end

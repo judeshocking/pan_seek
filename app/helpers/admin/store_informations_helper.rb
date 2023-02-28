@@ -1,0 +1,2 @@
+module Admin::StoreInformationsHelper
+end
