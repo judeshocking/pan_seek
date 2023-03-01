@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :store_informations, only:[:new,:index,:edit,:create,:update]
+    resources :store_informations, only:[:new,:index,:show,:edit,:create,:update]
     root 'homes#top'
   end
   namespace :user do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_28_133215) do
+ActiveRecord::Schema.define(version: 2023_03_01_140219) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,26 +52,35 @@ ActiveRecord::Schema.define(version: 2023_02_28_133215) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "breads", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "introduction", null: false
+    t.integer "price", null: false
+    t.text "product_image_url", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
     t.string "screen_name"
     t.string "comments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user"
-    t.integer "post"
-    t.integer "user_id"
-    t.integer "post_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "store_informations", force: :cascade do |t|
     t.integer "bread_id"
     t.string "address", null: false
     t.string "access", null: false
-    t.integer "business_hours", null: false
     t.string "eat_in_space", null: false
     t.string "regular_holiday", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "business_hours"
     t.string "name"
     t.index ["bread_id"], name: "index_store_informations_on_bread_id"
   end
@@ -90,5 +99,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_133215) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "store_informations", "breads"
 end

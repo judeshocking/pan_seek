@@ -1,8 +1,14 @@
 class Admin::StoreInformationsController < ApplicationController
   def index
+    @store_informations = StoreInformation.all
   end
 
   def edit
+    @store_information = StoreInformation.find(params[:id])
+  end
+
+  def show
+    @store_information = StoreInformation.find(params[:id])
   end
 
   def new
@@ -10,12 +16,22 @@ class Admin::StoreInformationsController < ApplicationController
   end
 
   def create
-    @store_information = StoreInformation.new(item_params)
+    @store_information = StoreInformation.new(store_information_params)
     if @store_information.save
-      redirect_to admin_store_informations_index_path
+      redirect_to admin_store_informations_path
     else
       flash[:item_created_error] = "商品情報が正しく保存されていません"
-      redirect_to admin_store_informations_new_path
+      redirect_to admin_store_informations_path
+    end
+  end
+
+  def update
+    @store_information = StoreInformation.find(params[:id])
+    if @store_information.update(store_information_params)
+      redirect_to admin_store_information_path(@store_information)
+    else
+      flash[:item_created_error] = "商品情報が正しくに保存されていません"
+      redirect_to admin_store_information_path(@store_information)
     end
   end
 
