@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_01_140219) do
+ActiveRecord::Schema.define(version: 2023_03_02_132914) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(version: 2023_03_01_140219) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "bread_id"
+    t.float "rate", null: false
+    t.text "text", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bread_id"], name: "index_posts_on_bread_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "store_informations", force: :cascade do |t|
     t.integer "bread_id"
     t.string "address", null: false
@@ -101,5 +112,7 @@ ActiveRecord::Schema.define(version: 2023_03_01_140219) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "posts", "breads"
+  add_foreign_key "posts", "users"
   add_foreign_key "store_informations", "breads"
 end

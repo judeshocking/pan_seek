@@ -1,0 +1,18 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col text-center">
+      <div class="p-3 mb-2 bg-light text-black">
+        <h2>レビュー</h2>
+        <%= form_with(model: @post, url: user_posts_path, local: true) do |f| %>
+          <div class="form-group row">
+            <%= f.text_area :text, class: 'form-control',size: "20x10", placeholder: "レビュー無記入でも投稿できます" %>
+          </div>
+          <div class="col text-center">
+            <%= f.submit :投稿, class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

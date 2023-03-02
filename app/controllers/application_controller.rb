@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if user_signed_in?
-        root_path
+       user_homes_top_path
     else
       admin_root_path
     end
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     if resource == :admin
       admin_session_path
-    else root_path
+    else user_homes_top_path
     end
   end
 

@@ -1,2 +1,15 @@
-<h1>User::Comments#new</h1>
-<p>Find me in app/views/user/comments/new.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col text-center">
+      <div class="p-3 mb-2 bg-light text-black">
+        <h2>レビュー</h2>
+        <%= form_with(model: @comment, local: true) do |f| %>
+          <div class="star-form-group" id="star1">
+            <%= f.label :comfort,'乗り心地', class:'star-title' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
