@@ -4,6 +4,21 @@
       <div class="p-3 mb-2 bg-light text-black">
         <h2>レビュー</h2>
         <%= form_with(model: @post, url: user_posts_path, local: true) do |f| %>
+        <div class="" id="star">
+            <%= f.label :rate,'評価 :', class:'col-md-3 col-form-label' %>
+            <%= f.hidden_field :rate, id: :review_star %>
+          </div>
+
+          <script>
+            $('#star').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              scoreName: 'post[rate]',
+              half: true,
+            });
+          </script>
           <div class="form-group row">
             <%= f.text_area :text, class: 'form-control',size: "20x10", placeholder: "レビュー無記入でも投稿できます" %>
           </div>

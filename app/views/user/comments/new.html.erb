@@ -3,11 +3,21 @@
     <div class="col text-center">
       <div class="p-3 mb-2 bg-light text-black">
         <h2>レビュー</h2>
-        <%= form_with(model: @comment, local: true) do |f| %>
-          <div class="star-form-group" id="star1">
-            <%= f.label :comfort,'乗り心地', class:'star-title' %>
+          <div class="" id="star">
+            <%= f.label :rate,'評価 :', class:"" %>
+            <%= f.hidden_field :rate, id: :review_star %>
           </div>
-        <% end %>
+
+          <script>
+            $('#star').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              scoreName: 'post[rate]',
+              half: true,
+            });
+          </script>
       </div>
     </div>
   </div>

@@ -5,9 +5,10 @@ Rails.application.routes.draw do
     root 'homes#top'
   end
   namespace :user do
-    get 'homes/top'
+    root "homes#top"
     resources :comments, only:[:new,:show,:index,:edit,:create,:update,:destroy]
     resources :users, only:[:edit,:show,:update,:quit,:out]
+    resources :store_informations, only:[:index,:show]
     resources :posts, only:[:new,:show,:index,:edit,:create,:update,:destroy]
 
   end

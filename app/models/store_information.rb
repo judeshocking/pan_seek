@@ -1,6 +1,6 @@
 class StoreInformation < ApplicationRecord
 
-  has_one_attached :image
+  has_one_attached :store_image_url
 
   validates :name, presence: true
   validates :address, presence: true

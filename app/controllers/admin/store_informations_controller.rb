@@ -37,6 +37,6 @@ class Admin::StoreInformationsController < ApplicationController
 
   private
   def store_information_params
-    params.require(:store_information).permit(:image,:name,:address,:access,:business_hours,:eat_in_space,:regular_holiday)
+    params.require(:store_information).permit(:store_image_url,:name,:address,:access,:business_hours,:eat_in_space,:regular_holiday)
   end
 end
