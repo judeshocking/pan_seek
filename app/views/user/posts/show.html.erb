@@ -1,2 +1,11 @@
-<h1>User::Posts#show</h1>
-<p>Find me in app/views/user/posts/show.html.erb</p>
+              <% @posts.each do |post| %>
+                <div>レビュー</div>
+                <div>
+                  <strong><%= post.user.screen_name %></strong>
+                  <br />
+                  <p><%= post.text %></p>
+                    <% if user_signed_in? && post.user == current_user %>
+                      <p><%= link_to 'Delete', user_post_path(post), method: :delete %></p>
+                    <% end %>
+                </div>
+              <% end %>

@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   namespace :user do
     root "homes#top"
     resources :comments, only:[:new,:show,:index,:edit,:create,:update,:destroy]
-    resources :users, only:[:edit,:show,:update,:quit,:out]
-    resources :store_informations, only:[:index,:show]
+    resources :store_informations, only:[:index,:show,:detail]
     resources :posts, only:[:new,:show,:index,:edit,:create,:update,:destroy]
+    resources :users, only:[:edit,:show,:update,:quit,:out]
 
   end
 

@@ -4,16 +4,17 @@ class User::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to user_posts_index_path
+      redirect_back(fallback_location: root_path)
     else
-      flash[:post_created_error] = "商品情報が正しく保存されていません"
-      redirect_to user_posts_new_path
+      redirect_back(fallback_location: user_root_path)
     end
   end
 
+
   def index
+    @post = Post.all
   end
 
   def show
@@ -24,6 +25,6 @@ class User::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:text,:rate)
+    params.require(:post).permit(:text,:rate,:store_information_id,:user_id)
   end
 end

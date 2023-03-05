@@ -8,4 +8,11 @@ class User::UsersController < ApplicationController
 
   def quit
   end
+
+
+  private
+
+  def user_params
+      params.require(:user).permit(:screen_name, :profile_image_url, :sex)
+  end
 end

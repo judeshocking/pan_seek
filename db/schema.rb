@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_04_081842) do
+ActiveRecord::Schema.define(version: 2023_03_05_110549) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -74,12 +74,11 @@ ActiveRecord::Schema.define(version: 2023_03_04_081842) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "bread_id"
     t.float "rate", null: false
     t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bread_id"], name: "index_posts_on_bread_id"
+    t.integer "store_information_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -94,6 +93,8 @@ ActiveRecord::Schema.define(version: 2023_03_04_081842) do
     t.string "business_hours"
     t.string "name"
     t.text "store_image_url"
+    t.text "text"
+    t.float "rate"
     t.index ["bread_id"], name: "index_store_informations_on_bread_id"
   end
 
@@ -105,6 +106,7 @@ ActiveRecord::Schema.define(version: 2023_03_04_081842) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "screen_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -113,7 +115,6 @@ ActiveRecord::Schema.define(version: 2023_03_04_081842) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "posts", "breads"
   add_foreign_key "posts", "users"
   add_foreign_key "store_informations", "breads"
 end

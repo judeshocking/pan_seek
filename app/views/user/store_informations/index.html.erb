@@ -1,18 +1,24 @@
 <div class="container my-5">
   <div class="row">
-    <h2>店舗一覧(全<%= @store_informations.count %>件)</h2>
-  </div>
+    <div class="col text-center">
+      <div class="p-3 mb-2 bg-light text-black">
+        <h2>店舗一覧(全<%= @store_informations.count %>件)</h2>
 
-  <div class="row mt-3 mb-3 text-center text-md-left">
-    <% @store_informations.first(4).each do |store_information| %>
-    <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
-      <div>
-        <%= image_tag store_information.store_image_url, size: "200x200", format: "jpeg", fallback: "no_image.jpeg", class:"lb" %>
-        <div class="card-body">
-          <p class="card-text"><%= store_information.name %></p>
-          </div>
+        <div class="row mt-3 mb-3 text-center text-md-left">
+          <% @store_informations.first(4).each do |store_information| %>
+            <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
+              <div>
+                <%= link_to user_store_information_path(store_information) do %>
+                <p class="img-wrap"><%= image_tag store_information.store_image_url, size: "200x200", format: "jpeg", fallback: "no_image.jpeg", class:"lb" %></p>
+                <% end %>
+                <div class="card-body">
+                  <p class="card-text"><%= store_information.name %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-    <% end %>
   </div>
 </div>

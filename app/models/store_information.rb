@@ -1,6 +1,8 @@
 class StoreInformation < ApplicationRecord
 
   has_one_attached :store_image_url
+  belongs_to :user
+  has_many :posts, dependent: :destroy
 
   validates :name, presence: true
   validates :address, presence: true
