@@ -20,7 +20,7 @@ class Admin::StoreInformationsController < ApplicationController
     if @store_information.save
       redirect_to admin_store_informations_path
     else
-      flash[:item_created_error] = "商品情報が正しく保存されていません"
+      flash[:store_created_error] = "店舗情報が正しく保存されていません"
       redirect_to admin_store_informations_path
     end
   end
@@ -30,7 +30,7 @@ class Admin::StoreInformationsController < ApplicationController
     if @store_information.update(store_information_params)
       redirect_to admin_store_information_path(@store_information)
     else
-      flash[:item_created_error] = "商品情報が正しくに保存されていません"
+      flash[:store_created_error] = "店舗情報が正しくに保存されていません"
       redirect_to admin_store_information_path(@store_information)
     end
   end

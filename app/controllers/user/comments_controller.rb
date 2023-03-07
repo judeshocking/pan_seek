@@ -1,14 +1,13 @@
 class User::CommentsController < ApplicationController
-  def new
-    @comment = Comment.new
-  end
 
   def create
-    @comment = Comment.new(comment_params)
-    @comment.user_id = current_user.id
-    @comment.save
-    redirect_to user_comments_show_path
+    store_information = StoreInformation.find(params[:store_information_id])
+    comment = current_user.comments.new(comment_params)
+    comment.store_information_id = store_information.id
+    comment.save
+    redirect_to user_store_information_path(store_information)
   end
+
 
   def index
   end

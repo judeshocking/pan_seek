@@ -1,11 +1,17 @@
-              <% @posts.each do |post| %>
-                <div>レビュー</div>
-                <div>
-                  <strong><%= post.user.screen_name %></strong>
-                  <br />
-                  <p><%= post.text %></p>
-                    <% if user_signed_in? && post.user == current_user %>
-                      <p><%= link_to 'Delete', user_post_path(post), method: :delete %></p>
-                    <% end %>
-                </div>
-              <% end %>
+<div class="container my-5">
+  <div class="row">
+    <div class="col text-center">
+      <div class="p-3 mb-2 bg-light text-black">
+        <div class="row mt-3 mb-3 text-center text-md-left">
+            <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
+              <div class="card-body">
+                <p class="card-text"><%= @post.user.screen_name %></p>
+                <p class="card-text"><%= @post.title %></p>
+                <p class="card-text"><%= @post.text %></p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

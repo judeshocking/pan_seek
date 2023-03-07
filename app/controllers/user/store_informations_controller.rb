@@ -7,12 +7,9 @@ class User::StoreInformationsController < ApplicationController
 
   def show
     @store_information = StoreInformation.find(params[:id])
-    @posts = @store_information.posts.includes(:user).all
-    @post  = @store_information.posts.build(user_id: current_user.id) if current_user
+    @comment = Comment.new
   end
 
-  def create
-  end
 
   private
 
