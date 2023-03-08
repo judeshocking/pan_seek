@@ -23,11 +23,29 @@ class User::PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    post = Post.find(params[:id])
+    if post.update(post_params)
+       redirect_to user_post_path(post.id)
+    else
+      flash[:post_update_error] = "変更が正しく保存されていません"
+      redirect_to edit_user_post_path
+    end
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    flash[:post_destroy] = "投稿は削除されました"
+    redirect_to user_posts_path
   end
 
 
   private
   def post_params
-    params.require(:post).permit(:title,:text)
+    params.require(:post).permit(:title,:text,:image)
   end
 end

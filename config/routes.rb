@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :store_informations, only:[:index,:show,:create,:update] do
       resources :comments, only:[:create]
     end
-    resources :posts, only:[:new,:create,:show,:index,:edit,:update,:destroy]
+    resources :posts, only:[:new,:show,:index,:edit,:create,:update,:destroy]
     resources :users, only:[:edit,:show,:update,:quit,:out]
   end
 
