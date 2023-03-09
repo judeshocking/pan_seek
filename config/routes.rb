@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :comments, only:[:create]
     end
     resources :posts, only:[:new,:show,:index,:edit,:create,:update,:destroy]
+    get "search" => "posts#search"
     resources :users, only:[:edit,:show,:update,:quit,:out]
   end
 

@@ -44,8 +44,14 @@ class User::PostsController < ApplicationController
   end
 
 
-  private
-  def post_params
-    params.require(:post).permit(:title,:text,:image)
+  def search
+    @posts = Post.search(params[:keyword])
+    @keyword = params[:keyword]
+    redirect_to user_posts_path
   end
+
+  private
+    def post_params
+      params.require(:post).permit(:title,:text,:image,:keyword)
+    end
 end
