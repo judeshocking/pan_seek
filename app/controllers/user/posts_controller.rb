@@ -15,8 +15,10 @@ class User::PostsController < ApplicationController
   end
 
   def index
-    @post = Post.all
+    @posts = Post.all
+    @posts = @posts.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
+
 
   def show
     @post = Post.find(params[:id])
@@ -44,14 +46,8 @@ class User::PostsController < ApplicationController
   end
 
 
-  def search
-    @posts = Post.search(params[:keyword])
-    @keyword = params[:keyword]
-    redirect_to user_posts_path
-  end
-
   private
     def post_params
-      params.require(:post).permit(:title,:text,:image,:keyword)
+      params.require(:post).permit(:title,:text,:image,:rate).merge(user_id: current_user.id)
     end
 end

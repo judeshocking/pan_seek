@@ -4,11 +4,7 @@
       <div class="p-3 mb-2 bg-light text-black">
         <div class="row mt-3 mb-3 text-center text-md-left">
             <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
-              <div class="card-body">
-                <p class="card-text"><%= @post.user.screen_name %></p>
-                <p class="card-text"><%= @post.title %></p>
-                <p class="card-text"><%= @post.text %></p>
-              </div>
+              <%= image_tag @post.image.variant(resize: '200x200'), class: 'post-image' if @post.image.attached? %>
             </div>
         </div>
       </div>
