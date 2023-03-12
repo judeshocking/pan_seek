@@ -2,12 +2,29 @@
   <div class="row">
     <div class="col text-center">
       <div class="p-3 mb-2 bg-light text-black">
-        <div class="row mt-3 mb-3 text-center text-md-left">
-            <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
-              <%= image_tag @post.image.variant(resize: '200x200'), class: 'post-image' if @post.image.attached? %>
+          <div class=”card” style=”width: 18rem;”>
+            <div class=”card-body”>
+              <%= image_tag @post.get_image, size: "300x300" %>
+                <h5 class=”card-title”><%= @post.title %></h5>
+                <p class=”card-text”><%= @post.text %></p>
+                <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
             </div>
+          </div>
+
+          <div>
+            <% @post.comments.each do |comment| %>
+            <p></p>
+              <%= comment.user.name %>
+              <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+            <% end %>
+          </div>
+          <div>
+          <%= form_with(model:[@post, @comment], method: :post) do |f| %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </div>
