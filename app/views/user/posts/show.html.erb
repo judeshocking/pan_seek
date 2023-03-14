@@ -8,21 +8,32 @@
                 <h5 class=”card-title”><%= @post.title %></h5>
                 <p class=”card-text”><%= @post.text %></p>
                 <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+                <% if @post.user == current_user %>
+                  <%= link_to "削除", user_posts_path(@post), method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %>
+                <% end %>
             </div>
           </div>
 
           <div>
             <% @post.comments.each do |comment| %>
             <p></p>
-              <%= comment.user.name %>
-              <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+              <%= comment.user.screen_name %>:
+              <%= comment.created_at.strftime('%Y/%m/%d') %>  :  <%= comment.comment %>
+              <% if comment.user == current_user %>
+                <%= link_to "削除", user_post_path(comment.post, comment), method: :delete %>
+              <% end %>
             <% end %>
           </div>
           <div>
-          <%= form_with(model:[@post, @comment], method: :post) do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
+            <div class="col-sm-12 my-2">
+              <p>コメント件数：<%= @post.comments.count %></p>
+              <%= form_with model: [:user, @post, @comment] do |f| %>
+              <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+            </div>
+            <div class="col-sm-12 my-2">
+              <%= f.submit "送信する" %>
+            </div>
+            <% end %>
           </div>
         </div>
     </div>

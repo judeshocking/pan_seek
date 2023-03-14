@@ -3,6 +3,14 @@
     <div class="col text-center">
       <div class="p-3 mb-2 bg-light text-black">
         <h2>投稿</h2>
+          <form class="my-2 my-lg-0">
+            <div class="my-3 mr-sm-2">
+              <%= form_with url: user_posts_path, method: :get, local: true do |f| %>
+                <%= f.text_field :search %>
+                <%= f.submit "Search", name: nil %>
+              <% end %>
+            </div>
+          </form>
           <table class="table table-hover table-inv">
           <thead>
             <th>ハンドルネーム</th>
@@ -15,18 +23,10 @@
               <tr>
                 <td><%= post.user.screen_name %></td>
                 <td><%= link_to post.title,user_post_path(post) %></td>
+                <td><%= link_to "#{post.comments.count} コメント", user_post_path(post.id) %></td>
                 <td><%= link_to "編集", edit_user_post_path(post.id) %></td>
-                <td><%= link_to "削除", user_post_path(post.id),method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %></td>
               </tr>
             <% end %>
-            <form class="my-2 my-lg-0">
-              <div class="my-3 mr-sm-2">
-                <%= form_with url: user_posts_path, method: :get, local: true do |f| %>
-                  <%= f.text_field :search %>
-                  <%= f.submit "Search", name: nil %>
-                <% end %>
-              </div>
-            </form>
           </tbody>
           </table>
         </div>
