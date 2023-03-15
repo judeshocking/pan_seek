@@ -7,14 +7,14 @@ class User::StoreInformationsController < ApplicationController
 
   def show
     @store_information = StoreInformation.find(params[:id])
-    @comment = Comment.new
+    @store_comment = StoreComment.new
   end
 
 
   private
 
   def store_information_params
-    params.require(:store_information).permit(:text,:rate)
+    params.require(:store_information).permit(:text)
   end
 
 end

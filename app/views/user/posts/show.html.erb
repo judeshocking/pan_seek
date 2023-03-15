@@ -9,7 +9,7 @@
                 <p class=”card-text”><%= @post.text %></p>
                 <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
                 <% if @post.user == current_user %>
-                  <%= link_to "削除", user_posts_path(@post), method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %>
+                  <%= link_to "削除", user_post_path(@post), method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %>
                 <% end %>
             </div>
           </div>
@@ -20,7 +20,7 @@
               <%= comment.user.screen_name %>:
               <%= comment.created_at.strftime('%Y/%m/%d') %>  :  <%= comment.comment %>
               <% if comment.user == current_user %>
-                <%= link_to "削除", user_post_path(comment.post, comment), method: :delete %>
+                <%= link_to "削除", user_post_comment_path(comment.post, comment), method: :delete %>
               <% end %>
             <% end %>
           </div>

@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     resources :posts, only:[:new,:show,:index,:edit,:create,:update,:destroy] do
       resources :comments, only:[:create,:destroy]
     end
-    resources :store_informations, only:[:index,:show,:create,:update]
+    resources :store_informations, only:[:index,:show,:create,:update] do
+      resources :store_comments, only:[:create,:destroy]
+    end
     root "homes#top"
   end
 

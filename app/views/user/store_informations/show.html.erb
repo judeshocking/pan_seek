@@ -39,12 +39,6 @@
             </table>
           </div>
         </div>
-        <h4>レビュー</h4>
-        <%= form_with model: [@store_information, @comment] do |f| %>
-        <div class="" id="star">
-            <%= f.label :rate,'評価 :', class:'col-md-3 col-form-label' %>
-            <%= f.hidden_field :rate, id: :review_star %>
-          </div>
 
           <script>
             $('#star').raty({
@@ -56,14 +50,26 @@
               half: true,
             });
           </script>
-          <div class="form-group row">
-            <%= f.label :コメント %>
-            <%= f.text_area :string, class:"form-control", size: "20x10", placeholder: "レビュー無記入でも投稿できます"%>
+          <div>
+            <% @store_information.store_comments.each do |store_comment| %>
+            <p></p>
+              <%= store_comment.user.screen_name %>:
+              <%= store_comment.store_comment %>
+              <% if store_comment.user == current_user %>
+                <%= link_to "削除",  user_store_information_store_comment_path(store_comment.store_information, store_comment), method: :delete %>
+              <% end %>
+            <% end %>
           </div>
-          <div class="col text-center">
-            <%= f.submit :投稿, class: "btn btn-primary" %>
-          </div>
-        <% end %>
+          <div>
+            <div class="col-sm-12 my-2">
+              <p>コメント件数：<%= @store_information.store_comments.count %></p>
+              <%= form_with model: [:user, @store_information, @store_comment] do |f| %>
+              <%= f.text_area :store_comment, rows: '5', placeholder: "コメントをここに" %>
+            </div>
+            <div class="col-sm-12 my-2">
+              <%= f.submit "送信する" %>
+            </div>
+            <% end %>
         </div>
       </div>
     </div>
