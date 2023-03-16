@@ -25,15 +25,17 @@
             <% end %>
           </div>
           <div>
+            <% if user_signed_in? %>
+            <%= form_with model: [:user, @post, @comment] , local: true do |f|  %>
             <div class="col-sm-12 my-2">
               <p>コメント件数：<%= @post.comments.count %></p>
-              <%= form_with model: [:user, @post, @comment] do |f| %>
               <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
             </div>
             <div class="col-sm-12 my-2">
               <%= f.submit "送信する" %>
-            </div>
+              <% end %>
             <% end %>
+            </div>
           </div>
         </div>
     </div>

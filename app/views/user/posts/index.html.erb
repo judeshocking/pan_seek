@@ -24,7 +24,9 @@
                 <td><%= post.user.screen_name %></td>
                 <td><%= link_to post.title,user_post_path(post) %></td>
                 <td><%= link_to "#{post.comments.count} コメント", user_post_path(post.id) %></td>
+                <% if post.user == current_user %>
                 <td><%= link_to "編集", edit_user_post_path(post.id) %></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>

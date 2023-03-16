@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :store_informations, only:[:index,:show,:create,:update] do
       resources :store_comments, only:[:create,:destroy]
     end
-    root "homes#top"
+    root to: 'homes#top'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

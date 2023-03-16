@@ -5,12 +5,11 @@
         <h2>投稿</h2>
         <%= form_with(model: @post, url: user_posts_path, local: true) do |f| %>
         <div class="title">
-          <h5>タイトル（店舗名、商品名など</h5>
+          <h5>タイトル（店舗名、商品名など)</h5>
           <%= f.text_area :title %>
         </div>
         <%= f.label :画像 %>
         <%= f.file_field :image,accept: "image/*" %>
-        </div>
         <div class="field" id="star">
           <%= f.label :rate, "評価：" %>
           <%= f.hidden_field :rate, id: :review_star %>
@@ -32,7 +31,7 @@
         <div class="col text-center">
           <%= f.submit :投稿, class: "btn btn-primary" %>
         </div>
-        <% end %>
+      <% end %>
       </div>
     </div>
   </div>

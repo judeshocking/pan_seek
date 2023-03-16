@@ -60,16 +60,15 @@
               <% end %>
             <% end %>
           </div>
-          <div>
-            <div class="col-sm-12 my-2">
-              <p>コメント件数：<%= @store_information.store_comments.count %></p>
-              <%= form_with model: [:user, @store_information, @store_comment] do |f| %>
-              <%= f.text_area :store_comment, rows: '5', placeholder: "コメントをここに" %>
-            </div>
+          <%= form_with model: [:user, @store_information, @store_comment] do |f| %>
+          <div class="col-sm-12 my-2">
+            <p>コメント件数：<%= @store_information.store_comments.count %></p>
+            <%= f.text_area :store_comment, rows: '5', placeholder: "コメントをここに" %>
             <div class="col-sm-12 my-2">
               <%= f.submit "送信する" %>
             </div>
             <% end %>
+          </div>
         </div>
       </div>
     </div>
