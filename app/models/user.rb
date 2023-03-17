@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :store_comments, dependent: :destroy
 
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 end

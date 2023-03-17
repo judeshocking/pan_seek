@@ -21,32 +21,58 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to user_user_path(current_user) do %>
-                <i class="nav-link" >マイページ</i>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to user_store_informations_path do %>
-                <i class="nav-link">店舗一覧</i>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to new_user_post_path do %>
-                <i class="nav-link">投稿</i>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to user_posts_path do %>
-                <i class="nav-link">投稿一覧</i>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to destroy_user_session_path,method: :delete do %>
-                <i class="nav-link">ログアウト</i>
-                <% end %>
-              </li>
+              <% if admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to admin_store_informations_path do %>
+                  <i class="nav-link">店舗一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to  admin_users_index_path do %>
+                  <i class="nav-link">会員一覧</i>
+                  <% end %>
+                </li>
+                <li clas="nav-item">
+                  <%= link_to destroy_admin_session_path,method: :delete do %>
+                  <i class="nav-link">ログアウト</i>
+                  <% end %>
+                </li>
+              <% elsif user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to user_user_path(current_user) do %>
+                  <i class="nav-link" >マイページ</i>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to user_store_informations_path do %>
+                  <i class="nav-link">店舗一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_post_path do %>
+                  <i class="nav-link">投稿</i>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to user_posts_path do %>
+                  <i class="nav-link">投稿一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_user_session_path,method: :delete do %>
+                  <i class="nav-link">ログアウト</i>
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to new_user_password_path do %>
+                  <i class="nav-link">新規登録</i>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to user_session_path do %>
+                  <i class="nav-link">ログイン</i>
+                  <% end %>
               <% end %>
             </ul>
           </div>
