@@ -1,5 +1,3 @@
-
-
 /*!
  * Raty - A Star Rating Plugin
  *

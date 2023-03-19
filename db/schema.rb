@@ -85,10 +85,10 @@ ActiveRecord::Schema.define(version: 2023_03_17_154412) do
   end
 
   create_table "store_comments", force: :cascade do |t|
-    t.text "store_comment"
+    t.text "store_comment", null: false
     t.integer "user_id"
     t.integer "store_information_id"
-    t.float "store_rate"
+    t.float "store_rate", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

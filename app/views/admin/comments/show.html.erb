@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <div class="row">
+    <h2>コメント詳細</h2>
+  </div>
+  <div class="row mt-3">
+    <div class="offset-sm-1 col-sm-10">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>コメントID</td>
+            <td><%= @comment.id %></td>
+          </tr>
+          <tr>
+            <td>コメント者</td>
+            <td><%= @comment.user.screen_name %></td>
+          </tr>
+          <tr>
+            <td>コメント</td>
+            <td><%= @comment.comment %></td>
+          </tr>
+          <tr>
+            <td class="row">
+              <% if admin_signed_in? %>
+　　　　　　　　<%= link_to "削除", admin_comment_path(@comment), method: :delete, "data-confirm" => "削除しますか？" %>
+　　　　　　　<% end %>
+　　　　　　</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

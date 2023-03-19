@@ -1,0 +1,30 @@
+<div class="container my-5">
+  <div class="row">
+    <h2>店舗コメント一覧</h2>
+  </div>
+  <div class="row mt-3">
+    <div class="offset-sm-1 col-sm-10">
+      <table class="table table-striped table-hover text-center">
+        <thead>
+          <tr>
+            <th>ユーザーID</th>
+            <th>コメントユーザー</th>
+            <th>コメントした店舗</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @store_comments.each do |store_comment| %>
+          <tr>
+            <td><%= store_comment.id %></td>
+            <td><%= store_comment.user.screen_name %></td>
+            <td><%= link_to admin_store_comment_path(store_comment) do %>
+                  <%= store_comment.store_information.name %>
+                <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

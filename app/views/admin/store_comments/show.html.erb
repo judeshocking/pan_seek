@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <div class="row">
+    <h2>店舗コメント詳細</h2>
+  </div>
+  <div class="row mt-3">
+    <div class="offset-sm-1 col-sm-10">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>コメントID</td>
+            <td><%= @store_comment.id %></td>
+          </tr>
+          <tr>
+            <td>コメント者</td>
+            <td><%= @store_comment.user.screen_name %></td>
+          </tr>
+          <tr>
+            <td>コメント</td>
+            <td><%= @store_comment.store_comment %></td>
+          </tr>
+          <tr>
+            <td class="row">
+              <% if admin_signed_in? %>
+　　　　　　　　<%= link_to "削除", admin_store_comment_path(@store_comment), method: :delete, "data-confirm" => "削除しますか？" %>
+　　　　　　　<% end %>
+　　　　　　</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

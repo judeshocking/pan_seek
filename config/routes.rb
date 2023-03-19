@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'users/index'
-    get 'users/edit'
-    get 'users/show'
-  end
   devise_for :users, controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'
@@ -17,6 +12,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :store_informations, only:[:new,:index,:show,:edit,:create,:update]
     resources :users, only:[:index,:edit,:show,:update]
+    resources :comments, only:[:index,:show,:destroy]
+    resources :store_comments, only:[:index,:show,:destroy]
     root 'homes#top'
   end
 
