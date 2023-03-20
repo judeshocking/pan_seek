@@ -3,21 +3,25 @@
     <div class="col text-center">
       <div class="p-3 mb-2 bg-light text-black">
         <h2>マイページ</h2>
+        <div class=”card” style=”width: 18rem;”>
+          <div class="card-body">
+            <%= image_tag @user.get_profile_image(500,500)%>
+            <div class="card-title"><strong><%= @user.screen_name %></strong></div>
+              <div class="card-text"><div><%= link_to "編集", edit_user_user_path %></div></div>
+          </div>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <th>投稿</th>
+          </thead>
+          <tbody>
+            <tr>
+              <% @posts.each do |post| %>
+                <td><%= link_to post.title, user_post_path(post.id) %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
       </div>
-       <div class="col-md-8 offset-md-1">
-         <table class="table table-hover table-inverse">
-           <thead>
-             <th>image</th>
-             <th>name</th>
-           </thead>
-           <tbody>
-               <tr>
-                 <td><%= @user.screen_name %></td>
-                 <td><%= link_to "Show", "/users/#{user.id}" %></td>
-                </tr>
-            </tbody>
-          </table>
-        </div>
     </div>
   </div>
 </div>
