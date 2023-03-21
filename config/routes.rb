@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :users, only:[:edit,:show,:update,:quit,:out]
+    post 'users/:id' => 'users#show'
     resources :posts, only:[:new,:show,:index,:edit,:create,:update,:destroy] do
       resources :comments, only:[:create,:destroy]
     end

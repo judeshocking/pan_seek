@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col text-center">
       <div class="p-3 mb-2 bg-light text-black">
-        <%= form_with(model: @post, url: user_post_path, local: true) do |f| %>
+        <%= form_with(model: @user, url: user_user_path, local: true) do |f| %>
         <div class="row mt-5">
           <div class="col-sm-4">
             <%= f.label :プロフィール画像 %>
-            <%= f.file_field :profile_image_url,accept: "image/*" %>
+            <%= f.file_field :profile_image,accept: "image/*" %>
           </div>
           <div class="col-sm-5">
             <div class="form-group row">
