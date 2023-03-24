@@ -5,7 +5,7 @@
         <h2>マイページ</h2>
         <div class=”card” style=”width: 18rem;”>
           <div class="card-body">
-            <%= image_tag @user.get_profile_image(500,500)%>
+            <%= image_tag @user.get_profile_image(600,600)%>
             <div class="card-title"><strong><%= @user.screen_name %></strong></div>
               <div class="card-text"><div><%= link_to "編集", edit_user_user_path %></div></div>
           </div>

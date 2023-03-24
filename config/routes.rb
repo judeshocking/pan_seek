@@ -3,11 +3,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'
+
   }
 
   devise_for :admin, controllers: {
   sessions: "admin/sessions"
   }
+  root 'user/homes#top'
 
   namespace :admin do
     resources :store_informations, only:[:new,:index,:show,:edit,:create,:update]
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
     resources :store_comments, only:[:index,:show,:destroy]
     root 'homes#top'
   end
+
 
   namespace :user do
     resources :users, only:[:edit,:show,:update,:quit,:out]
@@ -26,7 +29,6 @@ Rails.application.routes.draw do
     resources :store_informations, only:[:index,:show,:create,:update] do
       resources :store_comments, only:[:create,:destroy]
     end
-    root to: 'homes#top'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

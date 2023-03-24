@@ -39,31 +39,34 @@
             </table>
           </div>
         </div>
-        <div class="p-3 mb-2 bg-secondary text-white">
+        <div class=" p-3 mb-2 bg-secondary text-white">
           <span><%= @store_information.name %>に投稿されたコメント一覧</span>
         </div>
-        <div class="card" style="width: 18rem;">
+        <div class=”card” style=”width: 18rem;>
           <% @store_information.store_comments.each do |store_comment| %>
+          <%= image_tag @user.get_profile_image(100,100) %>
+          <ul class="list-group list-group-flush">
             <strong><%= store_comment.user.screen_name %></strong>
+            <p>評価 : <%= store_comment.store_rate %>点 |</p>
             <%= store_comment.store_comment %>
-            <div id="star-rate<%= @store_comment.id%>"></td>
-              <script>
-                $('#star-rate<%= @store_comment.id %>').empty();
-                $('#star-rate<%= @store_comment.id %>').raty({
-                  size      : 36,
-                  starOff   : '<%= asset_path('star-off.png') %>',
-                  starOn    : '<%= asset_path('star-on.png') %>',
-                  starHalf  : '<%= asset_path "star-half.png" %>',
-                  half      : false,
-                  readOnly: true,
-                  score: <%= store_comment.store_rate %>,
-                });
-              </script>
-              <%= store_comment.store_rate %>点
-            </div>
+              <div id="star-rate<%= store_comment.id %>"></td>
+                <script>
+                  $('#star-rate<%= store_comment.id %>').empty();
+                  $('#star-rate<%= store_comment.id %>').raty({
+                    size      : 32,
+                    starOff   : '<%= asset_path('star-off.png') %>',
+                    starOn    : '<%= asset_path('star-on.png') %>',
+                    starHalf  : '<%= asset_path "star-half.png" %>',
+                    half      : false,
+                    readOnly: true,
+                    score: <%= store_comment.store_rate %>,
+                  });
+                </script>
+              </div>
             <% if store_comment.user == current_user %>
               <%= link_to "削除",  user_store_information_store_comment_path(store_comment.store_information, store_comment), method: :delete %>
             <% end %>
+          </ul>
           <% end %>
         </div>
         <p>コメント件数：<%= @store_information.store_comments.count %></p>

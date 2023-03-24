@@ -4,6 +4,8 @@ class StoreInformation < ApplicationRecord
   belongs_to:user
   has_many :store_comments, dependent: :destroy
 
+
+
   validates :name, presence: true
   validates :address, presence: true
 	validates :access, presence: true

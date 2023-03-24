@@ -8,7 +8,7 @@ class User::StoreInformationsController < ApplicationController
   def show
     @store_information = StoreInformation.find(params[:id])
     @store_comment = StoreComment.new
-
+    @user = current_user
   end
 
 
