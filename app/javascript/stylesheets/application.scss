@@ -1,2 +1,24 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.background {
+  background-image: url("../images/andy-li-RndRFJ1v1kk-unsplash.jpg");
+  height: 800;
+  background-size: cover;
+}
+
+.bacground-content {
+  width: 100%; /* 横幅40% */
+  height: 800px; /* 親の高さに揃える */
+  background-color: rgba( 0, 0, 0, 0.5); /* 背景色を半透明の黒にする */
+}
+
+
+.all_field {
+  padding: 220px;
+}
+
+.home_title {
+  padding: 100px;
+}
+

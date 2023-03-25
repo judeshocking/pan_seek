@@ -7,9 +7,9 @@
               <%= image_tag @post.get_image, size: "300x300" %>
                 <h5 class=”card-title”><%= @post.title %></h5>
                 <p class=”card-text”><%= @post.text %></p>
-                <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+                <p>Post time：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
                 <% if @post.user == current_user %>
-                  <%= link_to "削除", user_post_path(@post), method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %>
+                  <%= link_to "Delete", user_post_path(@post), method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %>
                 <% end %>
             </div>
           </div>
@@ -23,7 +23,7 @@
               <%= comment.user.screen_name %>:
               <%= comment.created_at.strftime('%Y/%m/%d') %>  :  <%= comment.comment %>
               <% if comment.user == current_user %>
-                <%= link_to "コメント削除", user_post_comment_path(comment.post, comment), method: :delete %>
+                <%= link_to "Delete comment", user_post_comment_path(comment.post, comment), method: :delete %>
               <% end %>
             </ul>
             <% end %>

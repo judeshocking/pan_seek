@@ -24,64 +24,64 @@
               <% if admin_signed_in? %>
                 <li class="nav-item">
                   <%= link_to admin_store_informations_path do %>
-                  <i class="nav-link">お店</i>
+                  <i class="nav-link">Store</i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to  admin_users_path do %>
-                  <i class="nav-link">会員一覧</i>
+                  <i class="nav-link">Member list</i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to  admin_comments_path do %>
-                  <i class="nav-link">コメント一覧</i>
+                  <i class="nav-link">List of store comments</i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to  admin_store_comments_path do %>
-                  <i class="nav-link">店舗コメント一覧</i>
+                  <i class="nav-link">List of store comments</i>
                   <% end %>
                 </li>
                 <li clas="nav-item">
                   <%= link_to destroy_admin_session_path,method: :delete do %>
-                  <i class="nav-link">ログアウト</i>
+                  <i class="nav-link">Log out</i>
                   <% end %>
                 </li>
               <% elsif user_signed_in? %>
                 <li class="nav-item">
                   <%= link_to user_user_path(current_user) do %>
-                  <i class="nav-link" >マイページ</i>
+                  <i class="nav-link" >My page</i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to user_store_informations_path do %>
-                  <i class="nav-link">お店</i>
+                  <i class="nav-link">Store</i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to new_user_post_path do %>
-                  <i class="nav-link">投稿</i>
+                  <i class="nav-link">Post</i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to user_posts_path do %>
-                  <i class="nav-link">投稿一覧</i>
+                  <i class="nav-link">List of posts</i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to destroy_user_session_path,method: :delete do %>
-                  <i class="nav-link">ログアウト</i>
+                  <i class="nav-link">Logout</i>
                   <% end %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to new_user_password_path do %>
-                  <i class="nav-link">新規登録</i>
+                  <%= link_to new_user_registration_path do %>
+                  <i class="nav-link">Sign up</i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to user_session_path do %>
-                  <i class="nav-link">ログイン</i>
+                  <i class="nav-link">Log in</i>
                   <% end %>
               <% end %>
             </ul>
