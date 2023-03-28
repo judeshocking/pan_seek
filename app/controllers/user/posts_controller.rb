@@ -12,7 +12,7 @@ class User::PostsController < ApplicationController
       redirect_to user_posts_path
     else
       flash[:post_created_error] = "投稿が正しく保存されていません"
-      redirect_to new_user_post_path
+      render new_user_post_path
     end
   end
 

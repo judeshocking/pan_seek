@@ -1,7 +1,8 @@
 <div class="container my-5">
   <div class="row">
     <div class="col text-center">
-      <div class="p-3 mb-2 bg-light text-black">
+      <div class="post-color">
+        <div class="p-3 mb-2 text-black">
           <div class=”card” style=”width: 18rem;”>
             <div class=”card-body”>
               <%= image_tag @post.get_image, size: "300x300" %>
@@ -14,6 +15,16 @@
             </div>
           </div>
 
+           <%= form_with(model: @comment, url: user_posts_path, local: true) do |f| %>
+             <% if @comment.errors.any? %>
+               <%= @comment.errors.count %>件のエラーが発生しました
+                 <ul>
+                   <% @comment.errors.full_messages.each do |message| %>
+                     <li><%= message %></li>
+                   <% end %>
+                 </ul>
+               <% end %>
+            <% end %>
           <div class="p-3 mb-2 bg-secondary text-white">
             <span><%= @post.title %>に投稿されたコメント一覧</span>
           </div>
@@ -42,6 +53,7 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

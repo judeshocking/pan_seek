@@ -2,11 +2,16 @@ class User::StoreCommentsController < ApplicationController
 
 
   def create
-    store_information = StoreInformation.find(params[:store_information_id])
-    store_comment = current_user.store_comments.new(store_comment_params)
-    store_comment.store_information_id = store_information.id
-    store_comment.save
-    redirect_to user_store_information_path(store_information)
+    @store_information = StoreInformation.find(params[:store_information_id])
+    @store_comment = current_user.store_comments.new(store_comment_params)
+    @store_comment.store_information_id = @store_information.id
+    if @store_comment.save
+      redirect_to user_store_information_path(@store_information)
+    else
+      flash[:store_comment_created_error] = "コメントが正しく保存されていません"
+      redirect_to user_store_information_path(@store_information)
+    end
+
   end
 
   def destroy

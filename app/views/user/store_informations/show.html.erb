@@ -1,9 +1,10 @@
 <div class="container my-5">
   <div class="row">
     <div class="col text-center">
-      <div class="p-3 mb-2 bg-light text-black">
+      <div class="p-3 mb-2 bg-warning.bg-gradient text-black">
         <div class="row mt-4 mb-3 text-center text-md-left">
           <div class="col-lg-6">
+            <h3><%= flash[:store_comment_created_error] %></h3>
             <table class="table table-borderless">
               <tbody>
                 <tr>
@@ -12,27 +13,27 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>店舗名</td>
+                  <td>Store name</td>
                   <td><%= @store_information.name %></td>
                 </tr>
                 <tr>
-                  <td>住所</td>
+                  <td>Address</td>
                   <td><%= @store_information.address %></td>
                 </tr>
                 <tr>
-                  <td>アクセス</td>
+                  <td>Access</td>
                   <td><%= @store_information.access %></td>
                 </tr>
                 <tr>
-                  <td>営業時間</td>
+                  <td>Operating hours</td>
                   <td><%= @store_information.business_hours %></td>
                 </tr>
                 <tr>
-                  <td>イートインスペース</td>
+                  <td>Eat-in space</td>
                   <td><%= @store_information.eat_in_space %></td>
                 </tr>
                 <tr>
-                  <td>定休日</td>
+                  <td>Regular holiday</td>
                   <td><%= @store_information.regular_holiday %></td>
                 </tr>
               </tbody>
@@ -44,7 +45,7 @@
         </div>
         <div class=”card” style=”width: 18rem;>
           <% @store_information.store_comments.each do |store_comment| %>
-          <%= image_tag @user.get_profile_image(100,100),class:"mt-3 rounded-circle" %>
+          <%= image_tag store_comment.user.get_profile_image(100,100),class:"mt-3 rounded-circle" %>
           <ul class="list-group list-group-flush">
             <strong><%= store_comment.user.screen_name %></strong>
             <p>評価 : <%= store_comment.store_rate %>点 |</p>
@@ -64,7 +65,7 @@
                 </script>
               </div>
             <% if store_comment.user == current_user %>
-              <%= link_to "削除",  user_store_information_store_comment_path(store_comment.store_information, store_comment), method: :delete %>
+              <%= link_to "Delete",  user_store_information_store_comment_path(store_comment.store_information, store_comment), method: :delete %>
             <% end %>
           </ul>
           <% end %>

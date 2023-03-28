@@ -1,24 +1,65 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap');
+
 
 .background {
   background-image: url("../images/andy-li-RndRFJ1v1kk-unsplash.jpg");
-  height: 800;
+  height: 900px;
   background-size: cover;
 }
 
 .bacground-content {
   width: 100%; /* 横幅40% */
-  height: 800px; /* 親の高さに揃える */
+  height: 900px; /* 親の高さに揃える */
   background-color: rgba( 0, 0, 0, 0.5); /* 背景色を半透明の黒にする */
 }
 
+.new_group {
+  font-family: 'Noto Serif', sans-serif;
+  padding: 150px;
+  color: #FFDAB9;
+}
 
 .all_field {
+  font-family: 'Noto Serif', sans-serif;
+  color: #FFDAB9;
   padding: 220px;
+  background-size: cover;
 }
 
 .home_title {
   padding: 100px;
+  font-family: 'Noto Serif', sans-serif;
+  color: #FFDAB9;
 }
 
+.Editlink {
+  color: #FFDAB9;
+}
+
+.nav-link {
+  font-family: 'Noto Serif', sans-serif;
+  font-size: 20px;
+}
+
+.store_back {
+  background-image: url("../images/pexels-lisa-fotios-3586778.jpg");
+  height: 900px;
+  background-size: cover;
+}
+
+li{
+  list-style:none;
+}
+
+.top-link {
+  color: #440000;
+  font-family: 'Noto Serif', sans-serif;
+  font-size: 20px;
+}
+
+.post-color {
+  background-color: #F5DEB3;
+  width: 100%;
+}

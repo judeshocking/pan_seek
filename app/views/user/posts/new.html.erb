@@ -4,36 +4,32 @@
   <div class="row">
     <div class="col text-center">
       <div class="text-light">
+      <div class="new_group">
         <h2>Post</h2>
         <%= form_with(model: @post, url: user_posts_path, local: true) do |f| %>
+        <% if @post.errors.any? %>
+          <%= @post.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+             <% end %>
+          </ul>
+        <% end %>
         <div class="title">
           <h5>Title（店舗名、商品名など)</h5>
           <%= f.text_area :title %>
         </div>
-        <%= f.label :画像 %>
+        <%= f.label :Image %>
         <%= f.file_field :image,accept: "image/*" %>
-        <div class="field" id="star">
-          <%= f.label :rate, "評価：" %>
-          <%= f.hidden_field :rate, id: :review_star %>
-          <script>
-            $('#rate').empty();
-            new Raty(document.querySelector('#star'), {
-              size     : 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              scoreName: 'post[rate]',
-              half: true
-            });
-          </script>
-        </div>
-        <div class="form-group row">
-          <%= f.text_area :text, class: 'form-control',size: "20x10", placeholder: "レビュー無記入でも投稿できます" %>
+        <div class="form-group">
+          <%= f.label :text, "Comment" %>
+          <%= f.text_area :text, class: 'form-control',size: "20x10", placeholder: "コメント" %>
         </div>
         <div class="col text-center">
           <%= f.submit :Post, class: "btn btn-primary" %>
         </div>
       <% end %>
+      </div>
       </div>
     </div>
   </div>

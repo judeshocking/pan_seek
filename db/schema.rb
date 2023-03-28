@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2023_03_17_154412) do
     t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "title"
+    t.string "title", null: false
     t.float "rate"
     t.integer "comment_id"
     t.index ["comment_id"], name: "index_posts_on_comment_id"

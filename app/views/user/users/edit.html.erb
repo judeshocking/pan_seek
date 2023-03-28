@@ -1,25 +1,28 @@
+<div class="background">
 <div class="container my-5">
   <div class="row">
     <div class="col text-center">
-      <div class="p-3 mb-2 bg-light text-black">
+      <div class="text-light">
+        <div class="new_group">
         <%= form_with(model: @user, url: user_user_path, local: true) do |f| %>
         <div class="row mt-5">
           <div class="col-sm-4">
-            <%= f.label :プロフィール画像 %>
+            <%= f.label :Profileimage %>
             <%= f.file_field :profile_image,accept: "image/*" %>
           </div>
           <div class="col-sm-5">
             <div class="form-group row">
-              <%= f.label :ハンドルネーム, class:"col-sm-4" %>
+              <%= f.label :Screenname, class:"col-sm-4" %>
               <%= f.text_field :screen_name, class:"form-control col-sm-8" %>
             </div>
           </div>
           <div class="col-sm-12">
-            <%= f.submit :登録 %>
+            <%= f.submit :register %>
           </div>
         <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
+</div>

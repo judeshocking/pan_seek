@@ -5,6 +5,7 @@ class StoreInformation < ApplicationRecord
   has_many :store_comments, dependent: :destroy
 
 
+  validates :store_comment, presence: true
 
   validates :name, presence: true
   validates :address, presence: true

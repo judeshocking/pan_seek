@@ -11,6 +11,8 @@ module PanSeek
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    config.i18n.default_locale = :ja
+
     # config.assets.paths << Rails.root.join('public')
     # config.assets.precompile << %w(star-off.png star-on.png star-half.png)
 
