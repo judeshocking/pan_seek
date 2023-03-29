@@ -1,2 +1,23 @@
-<h1>User::Users#quit</h1>
-<p>Find me in app/views/user/users/quit.html.erb</p>
+<div class="background">
+<div class="bacground-content">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col text-center">
+        <div class="text-light">
+          <div class="new_group">
+            <h2 class="text-center">本当に退会しますか</h2>
+
+            <p class="text-center my-5">
+              退会する場合は、「退会する」をクリックしてください。</br>
+            </p>
+
+            <div class="d-flex justify-content-around mt-5">
+              <%= link_to "退会しない",user_session_path(current_user),class:"btn btn-outline-primary" %>
+              <%= link_to "退会する",user_out_path(current_user), method: :patch, data: { confirm: "本当に退会しますか？" },class:"btn btn-outline-danger" %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

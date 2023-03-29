@@ -7,7 +7,8 @@ class User::CommentsController < ApplicationController
     if @comment.save
       redirect_to user_posts_path
     else
-      render user_posts_path
+      flash[:comment_error] = "コメントが正しく保存されていません"
+      redirect_to user_post_path(params[:post_id])
     end
   end
 

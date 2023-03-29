@@ -1,4 +1,7 @@
 class User::UsersController < ApplicationController
+
+  before_action :reject_invalid_user, only: [:create]
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
@@ -9,6 +12,7 @@ class User::UsersController < ApplicationController
   end
 
   def quit
+    @user = current_user
   end
 
   def update
@@ -19,6 +23,13 @@ class User::UsersController < ApplicationController
       else
         render 'edit'
       end
+  end
+
+  def out
+    @user = current_user
+    @user.update(is_deleted: true)
+      reset_session
+      redirect_to root_path
   end
 
 

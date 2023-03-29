@@ -1,12 +1,13 @@
 <div class="container my-5">
   <div class="row">
     <div class="col text-center">
+      <div class="back_color">
       <div class="p-3 mb-2 bg-warning.bg-gradient text-black">
         <div class="row mt-4 mb-3 text-center text-md-left">
           <div class="col-lg-6">
             <h3><%= flash[:store_comment_created_error] %></h3>
             <table class="table table-borderless">
-              <tbody>
+              <tbody class="store_information">
                 <tr>
                   <td>
                     <%= image_tag @store_information.store_image_url, size: "300x300", format: "jpeg", fallback: "no_image.jpeg", class:"lb" %>
@@ -95,6 +96,7 @@
             <% end %>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>
