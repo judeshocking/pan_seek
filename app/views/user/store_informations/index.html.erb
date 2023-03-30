@@ -1,8 +1,14 @@
+<div class="background">
+<div class="bacground-content">
 <div class="container my-5">
   <div class="row">
     <div class="col text-center">
-      <div class="p-3 mb-2 bg-light text-black">
+      <div class="new_group">
         <h2>List of stores(All<%= @store_informations.count %>subject)</h2>
+        <%= form_with url: user_store_informations_path, method: :get, local: true do |f| %>
+          <%= f.text_field :search %>
+          <%= f.submit "Search", name: nil %>
+        <% end %>
 
         <div class="row mt-3 mb-3 text-center text-md-left">
           <% @store_informations.first(4).each do |store_information| %>
@@ -21,4 +27,6 @@
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>

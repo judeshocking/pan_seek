@@ -3,6 +3,7 @@ class User::StoreInformationsController < ApplicationController
   def index
     @store_information = StoreInformation.page(params[:page]).per(3)
     @store_informations = StoreInformation.all
+    @store_informations = @store_informations.where('address LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def show

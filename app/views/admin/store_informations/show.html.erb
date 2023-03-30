@@ -10,10 +10,8 @@
           <tr>
             <td>店舗画像</td>
             <td>
-              <% if @store_information.store_image_url.attached? %>
-              <%= image_tag @store_information.store_image_url, size: "200x200", format: "jpeg", fallback: "no_image.jpeg", class:"lb" %>
-              <% end %>
-              </td>
+              <%= image_tag @store_information.store_image_url, size: "300x300", format: "jpeg", fallback: "no_image.jpeg", class:"lb" %>
+            </td>
           </tr>
           <tr>
             <td>店舗名</td>
