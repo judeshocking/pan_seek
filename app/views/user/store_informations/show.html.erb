@@ -72,6 +72,8 @@
           <% end %>
         </div>
         <p>コメント件数：<%= @store_information.store_comments.count %></p>
+        <%= paginate @store_comments %>
+
           <%= form_with model: [:user, @store_information, @store_comment] do |f| %>
           <div class="col-sm-12 my-2">
             <div class="field" id="star">
@@ -91,7 +93,7 @@
             </div>
             <%= f.text_area :store_comment, rows: '5', placeholder: "コメントをここに" %>
             <div class="col-sm-12 my-2">
-              <%= f.submit "送信する" %>
+              <%= f.submit "コメントする" %>
             </div>
             <% end %>
           </div>

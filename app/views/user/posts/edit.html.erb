@@ -6,9 +6,9 @@
         <div class="text-light">
           <div class="new_group">
             <h2>Post edit</h2>
-            <%= form_with(model: @post, url: user_posts_path, local: true) do |f| %>
+            <%= form_with(model: @post, url: user_post_path, local: true) do |f| %>
             <div class="title">
-              <h5>Title（店舗名、商品名など</h5>
+              <h5>Title（店舗名、商品名など)</h5>
               <%= f.text_area :title %>
             </div>
             <div class="image">
@@ -19,7 +19,7 @@
               <%= f.text_area :text, class: 'form-control',size: "20x10", placeholder: "コメント" %>
             </div>
             <div class="col text-center">
-              <%= f.submit :Post, class: "btn btn-primary" %>
+              <%= f.submit :Edit, class: "btn btn-primary" %>
             </div>
             <% end %>
           </div>

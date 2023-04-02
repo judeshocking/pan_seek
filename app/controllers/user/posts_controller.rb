@@ -9,7 +9,7 @@ class User::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to user_posts_path
+      redirect_to user_post_path(@post[:id])
     else
       flash[:post_created_error] = "投稿が正しく保存されていません"
       render new_user_post_path
@@ -17,7 +17,7 @@ class User::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(10)
     @posts = @posts.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
@@ -25,7 +25,7 @@ class User::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments.page(params[:page])
+    @comments = @post.comments.page(params[:page]).per(5)
   end
 
   def edit
@@ -33,12 +33,12 @@ class User::PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.update(post_params)
-       redirect_to user_post_path(post.id)
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to user_post_path(@post)
     else
       flash[:post_update_error] = "変更が正しく保存されていません"
-      redirect_to edit_user_post_path
+      redirect_to edit_user_post_path(@post)
     end
   end
 

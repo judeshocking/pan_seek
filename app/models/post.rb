@@ -5,9 +5,8 @@ class Post < ApplicationRecord
    has_many :comments, dependent: :destroy
    has_one_attached :image
 
-   validates :title, presence: true
+   validates :title, presence: true, length: { maximum: 50}
    validates :text, presence: true
-   validates :image, presence: true
 
    def get_image
     if image.attached?

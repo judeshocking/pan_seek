@@ -5,7 +5,7 @@ class User::CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = post.id
     if @comment.save
-      redirect_to user_posts_path
+      redirect_to user_post_path(params[:post_id])
     else
       flash[:comment_error] = "コメントが正しく保存されていません"
       redirect_to user_post_path(params[:post_id])
