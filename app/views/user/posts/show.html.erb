@@ -17,34 +17,35 @@
                 <% end %>
             </div>
           </div>
-          <div class="p-3 mb-2 bg-secondary text-white">
-            <span><%= @post.title %>に投稿されたコメント一覧</span>
-          </div>
-          <div class=”card” style=”width: 18rem;”>
-            <% @post.comments.each do |comment| %>
-            <%= image_tag comment.user.get_profile_image(100,100),class:"mt-3 rounded-circle" %>
-            <ul class="list-group list-group-flush">
-              <%= comment.user.screen_name %></br>
-              <%= comment.created_at.strftime('%Y/%m/%d') %></br>
-              <%= comment.comment %>
-              <% if comment.user == current_user %>
-                <%= link_to "Delete comment", user_post_comment_path(comment.post, comment), method: :delete %>
-              <% end %>
-            </ul>
-            <% end %>
-            <%= paginate @comments %>
-          </div>
+
           <div>
             <% if user_signed_in? %>
-            <%= form_with model: [:user, @post, @comment] , local: true do |f|  %>
-            <div class="col-sm-12 my-2">
-              <p>コメント件数：<%= @post.comments.count %></p>
-              <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-            </div>
-            <div class="col-sm-12 my-2">
-              <%= f.submit "コメントする" %>
+              <%= form_with model: [:user, @post, @comment] , local: true do |f|  %>
+              <div class="col-sm-12 my-2">
+                <p>コメント件数：<%= @post.comments.count %></p>
+                <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+              </div>
+              <div class="col-sm-12 my-2">
+                <%= f.submit "コメントする" %>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
+
+            <div class="p-3 mb-2 bg-secondary text-white">
+              <span><%= @post.title %>に投稿されたコメント一覧</span>
+            </div>
+            <div class=”card” style=”width: 18rem;”>
+              <% @post.comments.each do |comment| %>
+              <%= image_tag comment.user.get_profile_image(100,100),class:"mt-3 rounded-circle" %>
+              <ul class="list-group list-group-flush">
+                <%= comment.user.screen_name %></br>
+                <%= comment.created_at.strftime('%Y/%m/%d') %></br>
+                <%= comment.comment %>
+                <% if comment.user == current_user %>
+                  <%= link_to "Delete comment", user_post_comment_path(comment.post, comment), method: :delete %>
+                <% end %>
+              </ul>
+              <% end %>
             </div>
           </div>
         </div>
