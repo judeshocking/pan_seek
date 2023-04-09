@@ -1,7 +1,7 @@
 class CreateStoreInformations < ActiveRecord::Migration[6.1]
   def change
     create_table :store_informations do |t|
-       t.references :bread, foreign_key: true
+       t.bigint :bread_id
        t.string :address, null: false
        t.string :access, null: false
        t.integer :business_hours, null: false
