@@ -25,6 +25,7 @@ class Admin::StoreInformationsController < ApplicationController
     end
   end
 
+
   def update
     @store_information = StoreInformation.find(params[:id])
     if @store_information.update(store_information_params)
@@ -34,6 +35,7 @@ class Admin::StoreInformationsController < ApplicationController
       redirect_to admin_store_information_path(@store_information)
     end
   end
+
 
   private
   def store_information_params
